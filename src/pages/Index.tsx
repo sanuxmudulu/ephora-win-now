@@ -6,7 +6,7 @@ import Testimonials from "@/components/Testimonials";
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background max-w-xl mx-auto">
+    <main className="min-h-screen bg-card max-w-xl mx-auto">
       <HeroSection />
       <HowItWorks />
       <CtaSection />
