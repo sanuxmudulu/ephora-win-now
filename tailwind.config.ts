@@ -82,6 +82,10 @@ export default {
           "0%, 100%": { boxShadow: "0 0 20px 0 hsl(var(--primary) / 0.3)" },
           "50%": { boxShadow: "0 0 30px 5px hsl(var(--primary) / 0.5)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
