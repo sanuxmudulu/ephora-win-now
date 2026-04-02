@@ -12,11 +12,6 @@ const Index = () => {
       <CtaSection />
       <TrustIndicators />
       <Testimonials />
-      <footer className="text-center pb-8">
-        <p className="text-[10px] text-muted-foreground/60">
-          This is a promotional offer. Terms and conditions apply.
-        </p>
-      </footer>
     </main>
   );
 };
