@@ -6,7 +6,7 @@ const HeroSection = () => {
       <img
         src="/images/logo.png"
         alt="Sephora Logo"
-        className="w-32 mb-3"
+        className="w-40 mb-3"
       />
 
       {/* Limited Offer */}
