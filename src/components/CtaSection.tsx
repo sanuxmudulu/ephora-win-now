@@ -5,7 +5,7 @@ const CtaSection = () => {
         🎁 Claim Now
       </button>
       <div className="mt-4 flex flex-col items-center gap-1">
-        <p className="text-urgency text-sm font-semibold">Only 47 left today</p>
+        <<p className="text-muted-foreground text-sm font-semibold">Only 47 left today</p>
         <p className="text-muted-foreground text-xs">5 minutes • No purchase required</p>
       </div>
     </section>
