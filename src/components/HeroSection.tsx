@@ -4,7 +4,7 @@ const HeroSection = () => {
       
       {/* Sephora Logo */}
       <img
-        src="/images/sephora.png"
+        src="/images/logo.png"
         alt="Sephora Logo"
         className="w-32 mb-3"
       />
