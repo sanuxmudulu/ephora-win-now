@@ -16,9 +16,29 @@ const HeroSection = () => {
 
 	return (
 		<div className="min-h-screen bg-gradient-to-b from-[#0a0a0f] via-[#111217] to-[#0a0a0f] flex flex-col items-center px-4 py-4">
+			<style>{`
+				@keyframes subtlePulse {
+					0%, 100% { transform: scale(1); }
+					50% { transform: scale(1.025); }
+				}
+
+				@keyframes sparkleFloat {
+					0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
+					50% { transform: translateY(-3px) rotate(8deg) scale(1.06); }
+				}
+
+				.cta-subtle-pulse {
+					animation: subtlePulse 2.2s ease-in-out infinite;
+				}
+
+				.sparkle-float {
+					animation: sparkleFloat 1.8s ease-in-out infinite;
+				}
+			`}</style>
+
 			<div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-3 relative shadow-lg">
 				<span className="text-xl sm:text-2xl font-bold text-black">$</span>
-				<div className="absolute -top-2 -right-2">
+				<div className="absolute -top-2 -right-2 sparkle-float">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
 						<path d="M12 2L14.09 8.26L20 10L14.09 11.74L12 18L9.91 11.74L4 10L9.91 8.26L12 2Z" fill="#ff4fb3" />
 						<path d="M5 3L6 6L9 7L6 8L5 11L4 8L1 7L4 6L5 3Z" fill="#ff83c9" />
@@ -26,7 +46,7 @@ const HeroSection = () => {
 				</div>
 			</div>
 
-			<h1 className="text-[1.9rem] sm:text-4xl font-bold text-center mb-2 text-[#ff5bbd] leading-tight">
+			<h1 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd] leading-tight">
 				Claim Your Gift Card Now!
 			</h1>
 
@@ -36,7 +56,7 @@ const HeroSection = () => {
 
 			<a
 				href={CTA_URL}
-				className="w-full max-w-md bg-[#eb4aa0] hover:bg-[#df3e94] text-white font-medium py-3 px-4 rounded-full mb-6 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(235,74,160,0.28)] transition"
+				className="w-full max-w-md bg-[#eb4aa0] hover:bg-[#df3e94] text-white font-medium py-3 px-4 rounded-full mb-6 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(235,74,160,0.28)] transition cta-subtle-pulse"
 			>
 				<div className="w-7 h-7 bg-white rounded-full flex items-center justify-center flex-shrink-0">
 					<span className="text-[#eb4aa0] font-bold text-xs">S</span>
@@ -54,10 +74,10 @@ const HeroSection = () => {
 							1
 						</div>
 						<div>
-							<h3 className="font-semibold text-white mb-1 text-lg sm:text-[1.1rem]">
+							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
 								Click The Button Above 👆
 							</h3>
-							<p className="text-[#a7b1c8] text-sm sm:text-base">
+							<p className="text-[#a7b1c8] text-sm">
 								Start your gift card claim process
 							</p>
 						</div>
@@ -68,10 +88,10 @@ const HeroSection = () => {
 							2
 						</div>
 						<div>
-							<h3 className="font-semibold text-white mb-1 text-lg sm:text-[1.1rem]">
+							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
 								Enter Your Email & Basic Info
 							</h3>
-							<p className="text-[#a7b1c8] text-sm sm:text-base">
+							<p className="text-[#a7b1c8] text-sm">
 								We need this to send your gift card
 							</p>
 						</div>
@@ -82,10 +102,10 @@ const HeroSection = () => {
 							3
 						</div>
 						<div>
-							<h3 className="font-semibold text-white mb-1 text-lg sm:text-[1.1rem]">
+							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
 								Complete 4-6 Deals
 							</h3>
-							<p className="text-[#a7b1c8] text-sm sm:text-base">
+							<p className="text-[#a7b1c8] text-sm">
 								Simple tasks: app downloads and surveys
 							</p>
 						</div>
@@ -96,10 +116,10 @@ const HeroSection = () => {
 							4
 						</div>
 						<div>
-							<h3 className="font-semibold text-white mb-1 text-lg sm:text-[1.1rem]">
+							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
 								Claim Your Gift Card!
 							</h3>
-							<p className="text-[#a7b1c8] text-sm sm:text-base">
+							<p className="text-[#a7b1c8] text-sm">
 								Your reward is waiting for you!
 							</p>
 						</div>
@@ -112,8 +132,10 @@ const HeroSection = () => {
 			</div>
 
 			<div className="w-full max-w-5xl mb-6">
-				<h2 className="text-xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd]">
-					Sephora Top Claims of the Week
+				<h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd] leading-tight">
+					Sephora Top Claims
+					<br />
+					of the Week
 				</h2>
 
 				<p className="text-center text-white text-sm sm:text-base mb-4">
@@ -181,18 +203,18 @@ const HeroSection = () => {
 									onClick={() => setOpenFaq(isOpen ? null : index)}
 									className="w-full flex items-center justify-between px-4 py-4 text-left"
 								>
-									<span className="text-white font-semibold text-base sm:text-lg">
+									<span className="text-white font-semibold text-sm sm:text-base">
 										{faq.question}
 									</span>
 									{isOpen ? (
-										<Minus className="w-5 h-5 text-white flex-shrink-0" />
+										<Minus className="w-4 h-4 text-white flex-shrink-0" />
 									) : (
-										<Plus className="w-5 h-5 text-white flex-shrink-0" />
+										<Plus className="w-4 h-4 text-white flex-shrink-0" />
 									)}
 								</button>
 
 								{isOpen && (
-									<div className="px-4 pb-4 text-[#b4bdd1] text-sm sm:text-base">
+									<div className="px-4 pb-4 text-[#b4bdd1] text-xs sm:text-sm">
 										{faq.answer}
 									</div>
 								)}
