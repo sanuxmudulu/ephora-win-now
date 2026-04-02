@@ -36,8 +36,8 @@ const HeroSection = () => {
 				}
 			`}</style>
 
-			<div className="w-14 h-14 sm:w-16 sm:h-16 bg-white rounded-full flex items-center justify-center mb-3 relative shadow-lg">
-				<span className="text-xl sm:text-2xl font-bold text-black">$</span>
+			<div className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] bg-white rounded-full flex items-center justify-center mb-3 relative shadow-lg">
+				<span className="text-[1.75rem] sm:text-[2.2rem] font-bold text-black leading-none">$</span>
 				<div className="absolute -top-2 -right-2 sparkle-float">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
 						<path d="M12 2L14.09 8.26L20 10L14.09 11.74L12 18L9.91 11.74L4 10L9.91 8.26L12 2Z" fill="#ff4fb3" />
@@ -46,7 +46,7 @@ const HeroSection = () => {
 				</div>
 			</div>
 
-			<h1 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd] leading-tight">
+			<h1 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd] leading-[1.08] tracking-[-0.035em] drop-shadow-[0_0_8px_rgba(255,91,189,0.22)]">
 				Claim Your Gift Card Now!
 			</h1>
 
@@ -106,7 +106,7 @@ const HeroSection = () => {
 								Complete 4-6 Deals
 							</h3>
 							<p className="text-[#a7b1c8] text-sm">
-								Simple tasks: app downloads and surveys
+								Higher value deals = faster rewards!
 							</p>
 						</div>
 					</div>
@@ -125,10 +125,6 @@ const HeroSection = () => {
 						</div>
 					</div>
 				</div>
-
-				<p className="text-[11px] text-[#7180a0] text-center mt-6">
-					* Terms and conditions apply. Gift card values may vary based on completed offers.
-				</p>
 			</div>
 
 			<div className="w-full max-w-5xl mb-6">
