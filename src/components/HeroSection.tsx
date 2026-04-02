@@ -16,7 +16,7 @@ const HeroSection = () => {
 
       {/* Headline */}
       <h1 className="text-2xl sm:text-3xl font-bold text-center leading-tight max-w-md">
-        Unlock a $750 Sephora gift card in a few simple steps
+        Get a $750 Sephora Gift Card by giving feedback on their products
       </h1>
 
     </section>
