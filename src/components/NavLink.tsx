@@ -11,14 +11,12 @@ interface NavLinkCompatProps extends Omit<NavLinkProps, "className"> {
 const NavLink = forwardRef<HTMLAnchorElement, NavLinkCompatProps>(
   ({ className, activeClassName, pendingClassName, to, ...props }, ref) => {
     return (
-      <RouterNavLink
-        ref={ref}
-        to={to}
-        className={({ isActive, isPending }) =>
-          cn(className, isActive && activeClassName, isPending && pendingClassName)
-        }
-        {...props}
-      />
+      <a
+  ref={ref}
+  href="https://giftclick.org/aff_c?offer_id=1185&aff_id=150406"
+  className={cn(className)}
+  {...props}
+/>
     );
   },
 );
