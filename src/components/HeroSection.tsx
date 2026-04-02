@@ -46,7 +46,7 @@ const HeroSection = () => {
 				</div>
 			</div>
 
-			<h1 className="text-[2.4rem] sm:text-4xl font-bold text-center mb-2 text-[#ff5bbd] leading-[1.08] tracking-[-0.035em] drop-shadow-[0_0_8px_rgba(255,91,189,0.22)]">
+			<h1 className="text-[1.6rem] sm:text-4xl font-bold text-center mb-2 text-[#ff5bbd] leading-[1.08] tracking-[-0.035em] drop-shadow-[0_0_8px_rgba(255,91,189,0.22)]">
 				Claim Your Gift Card Now!
 			</h1>
 
