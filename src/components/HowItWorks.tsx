@@ -1,6 +1,6 @@
 const steps = [
   "Click the button below",
-  "Register with Email and basic details",
+  "Register with Email and basic info",
   "Complete at least 3–5 deals",
   "Receive your Sephora gift card via email",
 ];
