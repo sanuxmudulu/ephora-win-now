@@ -146,24 +146,24 @@ const HeroSection = () => {
 				</div>
 
 				<div className="overflow-x-auto scrollbar-hide">
-					<div className="flex gap-3 min-w-max px-1">
-						<img
-							src="/images/proof1.jpeg"
-							alt="Proof 1"
-							className="w-[170px] sm:w-[220px] rounded-[16px] shadow-lg object-cover"
-						/>
-						<img
-							src="/images/proof2.jpeg"
-							alt="Proof 2"
-							className="w-[170px] sm:w-[220px] rounded-[16px] shadow-lg object-cover"
-						/>
-						<img
-							src="/images/proof3.jpeg"
-							alt="Proof 3"
-							className="w-[170px] sm:w-[220px] rounded-[16px] shadow-lg object-cover"
-						/>
-					</div>
-				</div>
+	<div className="flex gap-3 min-w-max px-1">
+		<img
+			src="/images/proof1.jpeg"
+			alt="Proof 1"
+			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
+		/>
+		<img
+			src="/images/proof3.jpeg"
+			alt="Proof 2"
+			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
+		/>
+		<img
+			src="/images/proof2.jpeg"
+			alt="Proof 3"
+			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
+		/>
+	</div>
+</div>
 			</div>
 
 			<div className="flex items-center justify-center gap-3 sm:gap-5 text-[#c0c7d8] flex-wrap mb-6">
