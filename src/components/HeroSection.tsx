@@ -1,231 +1,188 @@
-import { useState } from "react";
-import { Users, Star, Plus, Minus } from "lucide-react";
+import "../index.css";
+import { useEffect, useState } from "react";
 
-const CTA_URL = "https://giftclick.org/aff_c?offer_id=1185&aff_id=150406";
+const Index = () => {
+  const baseUrl = "https://linkthem.net/aff_c?offer_id=4129&aff_id=150406";
 
-const faqs = [
-	{ question: "How long does it take?", answer: "Blank" },
-	{ question: "What are 'deals'?", answer: "Blank" },
-	{ question: "Do I have to pay anything?", answer: "Blank" },
-	{ question: "Why do I need to enter my email?", answer: "Blank" },
-	{ question: "When do I get the Sephora gift card?", answer: "Blank" },
-];
+  const [showPopup, setShowPopup] = useState(false);
 
-const HeroSection = () => {
-	const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const handleClaimClick = () => {
+    setShowPopup(true);
+  };
 
-	return (
-		<div className="min-h-screen bg-gradient-to-b from-[#0a0a0f] via-[#111217] to-[#0a0a0f] flex flex-col items-center px-4 py-4">
-			<style>{`
-				@keyframes subtlePulse {
-					0%, 100% { transform: scale(1); }
-					50% { transform: scale(1.025); }
-				}
+  const handlePopupClaim = () => {
+    window.location.href = `${baseUrl}&source=dm`;
+  };
 
-				@keyframes sparkleFloat {
-					0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-					50% { transform: translateY(-3px) rotate(8deg) scale(1.06); }
-				}
+  const notifications = [ <>Olivia claimed <span className="text-green-500 font-semibold">$750</span> for completing 6 deals</>,
+                         <>Charlotte received <span className="text-green-500 font-semibold">$650</span> for doing 5 deals</>,
+                         <>Amelia received <span className="text-green-500 font-semibold">$500</span> for completing 4 deals</>,
+                         <>Isla claimed <span className="text-green-500 font-semibold">$750</span> for doing 6 deals</>,
+                         <>Ava claimed <span className="text-green-500 font-semibold">$750</span> for doing 6 deals</>,
+                         <>Noah received <span className="text-green-500 font-semibold">$500</span> for completing 4 deals</>,
+                         <>Grace claimed <span className="text-green-500 font-semibold">$650</span> for doing 5 deals</>,
+                         <>Willow received <span className="text-green-500 font-semibold">$750</span> for completing 6 deals</>,
+                         <>Harper claimed <span className="text-green-500 font-semibold">$650</span> for completing 5 deals</>,
+                         <>Chloe claimed <span className="text-green-500 font-semibold">$500</span> for doing 4 deals</>, ];
 
-				.cta-subtle-pulse {
-					animation: subtlePulse 2.2s ease-in-out infinite;
-				}
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [visible, setVisible] = useState(false);
 
-				.sparkle-float {
-					animation: sparkleFloat 1.8s ease-in-out infinite;
-				}
-			`}</style>
+  const shuffledNotifications = notifications;
 
-			<div className="w-16 h-16 sm:w-[4.5rem] sm:h-[4.5rem] bg-white rounded-full flex items-center justify-center mb-3 relative shadow-lg">
-				<span className="text-[1.75rem] sm:text-[2.2rem] font-bold text-black leading-none">$</span>
-				<div className="absolute -top-2 -right-2 sparkle-float">
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-						<path d="M12 2L14.09 8.26L20 10L14.09 11.74L12 18L9.91 11.74L4 10L9.91 8.26L12 2Z" fill="#ff4fb3" />
-						<path d="M5 3L6 6L9 7L6 8L5 11L4 8L1 7L4 6L5 3Z" fill="#ff83c9" />
-					</svg>
-				</div>
-			</div>
+  useEffect(() => {
+    const showTimer = setTimeout(() => {
+      setVisible(true);
+    }, 1500);
 
-			<h1 className="text-[1.6rem] sm:text-4xl font-bold text-center mb-2 text-[#ff5bbd] leading-[1.08] tracking-[-0.035em] drop-shadow-[0_0_8px_rgba(255,91,189,0.22)]">
-				Claim Your Gift Card Now!
-			</h1>
+    const cycleTimer = setInterval(() => {
+      setVisible(false);
 
-			<p className="text-center mb-5 text-white text-base sm:text-lg">
-				Higher value deals = faster rewards!
-			</p>
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % shuffledNotifications.length);
+        setVisible(true);
+      }, 350);
+    }, 9000);
 
-			<a
-				href={CTA_URL}
-				className="w-full max-w-md bg-[#eb4aa0] hover:bg-[#df3e94] text-white font-medium py-3 px-4 rounded-full mb-6 flex items-center justify-center gap-3 shadow-[0_10px_30px_rgba(235,74,160,0.28)] transition cta-subtle-pulse"
-			>
-				<div className="w-7 h-7 bg-white rounded-full flex items-center justify-center flex-shrink-0">
-					<span className="text-[#eb4aa0] font-bold text-xs">S</span>
-				</div>
-				<div className="text-left leading-tight">
-					<div className="font-bold text-sm sm:text-base">$750 Sephora Gift Card</div>
-					<div className="text-xs sm:text-sm opacity-95">(Enter Email & Complete Deals)</div>
-				</div>
-			</a>
+    return () => {
+      clearTimeout(showTimer);
+      clearInterval(cycleTimer);
+    };
+  }, [shuffledNotifications.length]);
 
-			<div className="w-full max-w-lg bg-[#09142f] rounded-[22px] p-5 sm:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.35)] mb-6">
-				<div className="space-y-6">
-					<div className="flex items-start gap-4">
-						<div className="w-11 h-11 bg-[#eb4aa0] text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-							1
-						</div>
-						<div>
-							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
-								Click The Button Above 👆
-							</h3>
-							<p className="text-[#a7b1c8] text-sm">
-								Start your gift card claim process
-							</p>
-						</div>
-					</div>
+  const faqs = [
+    {
+      q: "How long do the deals take?",
+      a: "Most deals take just a few minutes to complete. You can finish them at your own pace with no time limit once you've registered.",
+    },
+    {
+      q: "What are deals?",
+      a: "Deals are sponsored offers from our partner brands like free trials, sign-ups, or sample requests. They're how the coupon is funded.",
+    },
+    {
+      q: "How many deals do I have to do?",
+      a: "We recommend completing 4 to 5 deals to qualify. The more you complete, the higher your coupon value climbs - up to $750.",
+    },
+    {
+      q: "When will I receive my coupon?",
+      a: "Once your deals are verified, your JB Hifi coupon code will be delivered to your email within 24-48 hours.",
+    },
+  ];
 
-					<div className="flex items-start gap-4">
-						<div className="w-11 h-11 bg-[#eb4aa0] text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-							2
-						</div>
-						<div>
-							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
-								Enter Your Email & Basic Info
-							</h3>
-							<p className="text-[#a7b1c8] text-sm">
-								We need this to send your gift card
-							</p>
-						</div>
-					</div>
+  function FAQSection() {
+    return (
+      <section className="mt-10 rounded-2xl bg-white border border-gray-200 p-5 md:p-7 shadow-sm w-full max-w-lg">
+        <h2 className="text-2xl md:text-3xl font-bold text-black text-center">
+          Common Questions
+        </h2>
 
-					<div className="flex items-start gap-4">
-						<div className="w-11 h-11 bg-[#eb4aa0] text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-							3
-						</div>
-						<div>
-							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
-								Complete 4-6 Deals
-							</h3>
-							<p className="text-[#a7b1c8] text-sm">
-								Higher value deals = faster rewards!
-							</p>
-						</div>
-					</div>
+        <div className="mt-5 space-y-3">
+          {faqs.map((item, i) => (
+            <details
+              key={i}
+              className="group rounded-xl bg-black/80 border border-black/20 px-4 py-3"
+            >
+              <summary className="cursor-pointer list-none text-white font-semibold flex items-center justify-between">
+                <span>{item.q}</span>
+                <span className="text-white/60 group-open:rotate-45 transition-transform">
+                  +
+                </span>
+              </summary>
+              <p className="mt-2 text-sm text-white/75 leading-relaxed">
+                {item.a}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
+    );
+  }
 
-					<div className="flex items-start gap-4">
-						<div className="w-11 h-11 bg-[#eb4aa0] text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">
-							4
-						</div>
-						<div>
-							<h3 className="font-semibold text-white mb-1 text-base sm:text-lg">
-								Claim Your Gift Card!
-							</h3>
-							<p className="text-[#a7b1c8] text-sm">
-								Your reward is waiting for you!
-							</p>
-						</div>
-					</div>
-				</div>
-			</div>
+  return (
+    <>
+      {showPopup && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 px-4">
+          <div className="bg-white rounded-2xl p-6 max-w-sm w-full shadow-xl text-center">
+            <p className="text-lg font-bold text-black mb-5">
+              Set your age to at least 18 years to get the coupon.
+            </p>
+            <button
+              onClick={handlePopupClaim}
+              className="w-full bg-[#FFF200] hover:bg-[#e6d800] text-black font-bold py-4 px-6 rounded-full shadow-lg"
+            >
+              Claim Now
+            </button>
+          </div>
+        </div>
+      )}
 
-			<div className="w-full max-w-5xl mb-6">
-				<h2 className="text-2xl sm:text-3xl font-bold text-center mb-2 text-[#ff5bbd] leading-tight">
-					Sephora Top Claims
-					<br />
-					of the Week
-				</h2>
+      <div className="w-full bg-[#FFF200] text-black text-center text-sm font-semibold py-2 px-4 fixed top-0 left-0 z-40">
+        5,500+ People Already Claimed
+      </div>
 
-				<p className="text-center text-white text-sm sm:text-base mb-4">
-					Real results from real people! 💕
-				</p>
+      <div className="min-h-screen halloween-gradient flex flex-col items-center justify-center px-4 py-4 fade-in-up mt-8">
+        <div className="mb-4">
+          <img
+            src="/images/jb logo.jpg"
+            alt="JB Hi-Fi"
+            className="h-14 md:h-16 object-contain"
+          />
+        </div>
 
-				<div className="flex items-center justify-center mb-4">
-					<div className="flex items-center gap-2 text-xs sm:text-sm text-[#c0c7d8]">
-						<div className="w-3 h-3 rounded-full bg-[#eb4aa0]"></div>
-						<span>Swipe to see more</span>
-					</div>
-				</div>
+        <h1 className="text-2xl md:text-3xl font-bold text-center mb-6 text-black max-w-lg leading-snug">
+          $750 JB Hifi Coupon
+        </h1>
 
-				<div className="overflow-x-auto scrollbar-hide">
-	<div className="flex gap-3 min-w-max px-1">
-		<img
-			src="/images/proof1.jpeg"
-			alt="Proof 1"
-			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
-		/>
-		<img
-			src="/images/proof3.jpeg"
-			alt="Proof 2"
-			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
-		/>
-		<img
-			src="/images/proof2.jpeg"
-			alt="Proof 3"
-			className="w-[280px] sm:w-[220px] rounded-[16px] shadow-lg object-cover flex-shrink-0"
-		/>
-	</div>
-</div>
-			</div>
+        <div className="w-full max-w-lg rounded-2xl border border-gray-200 p-6 mb-6 bg-white">
+          <div className="space-y-6">
+            {[1, 2, 3, 4].map((step, i) => (
+              <div key={i} className="flex items-center gap-4">
+                <div className="w-10 h-10 bg-[#FFF200] text-black rounded-full flex items-center justify-center font-bold flex-shrink-0 step-number">
+                  {step}
+                </div>
+                <h3 className="font-semibold text-black">
+                  {[
+                    'Click "Claim Now"',
+                    "Enter your email and basic info",
+                    "Complete 4-6 sponsored deals",
+                    "Enjoy your $750 coupon!",
+                  ][i]}
+                </h3>
+              </div>
+            ))}
+          </div>
+        </div>
 
-			<div className="flex items-center justify-center gap-3 sm:gap-5 text-[#c0c7d8] flex-wrap mb-6">
-				<div className="flex items-center gap-2">
-					<Users size={14} className="text-[#eb4aa0]" />
-					<span className="text-xs sm:text-sm">25,000+ Vouchers Claimed</span>
-				</div>
+        <button
+          onClick={handleClaimClick}
+          className="w-full max-w-md bg-[#FFF200] hover:bg-[#e6d800] text-black font-semibold py-5 px-6 rounded-full mb-3 shein-cta-button cta-pump-enhanced flex items-center justify-center gap-3 shadow-lg"
+        >
+          <div className="text-left">
+            <div className="font-bold text-base md:text-lg">Claim Now</div>
+          </div>
+        </button>
 
-				<div className="w-1 h-1 bg-[#7d8597] rounded-full hidden sm:block" />
+        <p className="text-sm text-gray-600 text-center mb-4">
+          Higher value deals = higher payout
+        </p>
 
-				<div className="flex items-center gap-2">
-					<Star size={14} className="text-[#eb4aa0] fill-[#eb4aa0]" />
-					<span className="text-xs sm:text-sm">4.8★ average rating</span>
-				</div>
-			</div>
+        <div className="w-full max-w-lg mb-2">
+          <div className={`rounded-2xl border border-gray-200 bg-white px-4 py-3 shadow-lg transition-all duration-300 ${
+            visible ? "translate-y-0 opacity-100" : "translate-y-2 opacity-0"
+          }`}>
+            <div className="flex items-center justify-center gap-2 text-center">
+              <span className="h-2.5 w-2.5 rounded-full bg-green-500 flex-shrink-0" />
+              <p className="text-sm md:text-base font-semibold text-black leading-snug">
+                {shuffledNotifications[currentIndex]}
+              </p>
+            </div>
+          </div>
+        </div>
 
-			<div className="w-full max-w-lg bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.08)] rounded-[24px] p-5 sm:p-7 mb-6">
-				<h2 className="text-2xl sm:text-3xl font-bold text-center mb-5 text-[#ff5bbd]">
-					Common Questions
-				</h2>
-
-				<div className="space-y-3">
-					{faqs.map((faq, index) => {
-						const isOpen = openFaq === index;
-
-						return (
-							<div
-								key={faq.question}
-								className="rounded-[16px] border border-[rgba(255,255,255,0.08)] bg-[#0b0b0f] overflow-hidden"
-							>
-								<button
-									type="button"
-									onClick={() => setOpenFaq(isOpen ? null : index)}
-									className="w-full flex items-center justify-between px-4 py-4 text-left"
-								>
-									<span className="text-white font-semibold text-sm sm:text-base">
-										{faq.question}
-									</span>
-									{isOpen ? (
-										<Minus className="w-4 h-4 text-white flex-shrink-0" />
-									) : (
-										<Plus className="w-4 h-4 text-white flex-shrink-0" />
-									)}
-								</button>
-
-								{isOpen && (
-									<div className="px-4 pb-4 text-[#b4bdd1] text-xs sm:text-sm">
-										{faq.answer}
-									</div>
-								)}
-							</div>
-						);
-					})}
-				</div>
-			</div>
-
-			<p className="text-[11px] sm:text-xs text-[#6f7b97] max-w-3xl mx-auto text-center leading-tight pb-4">
-				This is a promotional experience and is not affiliated with or endorsed by Sephora.
-				By proceeding, you agree to receive relevant communications about this reward.
-			</p>
-		</div>
-	);
+        <FAQSection />
+      </div>
+    </>
+  );
 };
 
-export default HeroSection;
+export default Index;
